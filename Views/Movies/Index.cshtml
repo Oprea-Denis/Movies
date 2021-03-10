@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Tema1.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<h1>Add movies</h1>
+
+<p>
+    <a asp-action="Create">ADD</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Genre
+            </th>
+            <th>
+                Year
+            </th>
+            <th>
+                IMDB Rating
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imdbRating)
+            </td>
+            <td>
+                <a style="text-decoration: none;" class="edd" asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a style="text-decoration: none;" class="edd" asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a style="text-decoration: none;" class="edd" asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
